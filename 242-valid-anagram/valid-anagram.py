@@ -2,4 +2,12 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if (len(s) != len(t)):
             return False
-        return (sorted(s) == sorted(t) )
+
+        sCtr = Counter(s)
+        tCtr = Counter(t)
+        
+        for letter, count in sCtr.items():
+            if count != tCtr[letter]:
+                return False
+
+        return True
